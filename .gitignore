@@ -1,0 +1,332 @@
+# 🚀 OBS Stack - Observability & Monitoring for OpenWebUI
+# .gitignore for Docker-based observability stack
+
+# =====================================
+# Environment & Secrets
+# =====================================
+.env
+.env.local
+.env.production
+.env.staging
+*.key
+*.pem
+*.p12
+secrets/
+config/secrets/
+grafana/admin_password
+prometheus/htpasswd
+
+# =====================================
+# Docker & Container Data
+# =====================================
+# Persistent volumes and data
+data/
+volumes/
+grafana/data/
+prometheus/data/
+loki/data/
+opshub/data/
+sqlite/
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker compose overrides (keep template)
+docker-compose.override.yml
+!docker-compose.windows.yml
+
+# Container logs
+logs/
+*.log
+!.gitkeep
+
+# =====================================
+# Python
+# =====================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.env/
+.ENV/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# =====================================
+# Node.js (if any frontend components)
+# =====================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# =====================================
+# Monitoring & Observability Data
+# =====================================
+# Grafana
+grafana/grafana.db
+grafana/sessions/
+grafana/plugins/
+grafana/png/
+grafana/csv/
+
+# Prometheus
+prometheus/data/
+prometheus/wal/
+prometheus/queries.active
+
+# Loki
+loki/chunks/
+loki/index/
+loki/wal/
+loki/ruler/
+
+# Alert manager
+alertmanager/data/
+alertmanager/templates/custom/
+
+# =====================================
+# Generated Reports & Exports
+# =====================================
+reports/
+exports/
+backups/
+test-report-*.md
+test-report-*.html
+*-report-*.md
+*-export-*.json
+*-backup-*.tar.gz
+
+# =====================================
+# Temporary Files
+# =====================================
+*.tmp
+*.temp
+tmp/
+temp/
+.tmp/
+*.swp
+*.swo
+*~
+
+# =====================================
+# OS Generated Files
+# =====================================
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =====================================
+# IDE & Editor Files
+# =====================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# JetBrains
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =====================================
+# SSL/TLS Certificates
+# =====================================
+*.crt
+*.csr
+*.key
+*.p7b
+*.p7r
+*.srl
+ssl/
+certs/
+certificates/
+
+# =====================================
+# Load Testing & Simulation
+# =====================================
+load_test.py
+user_simulation.py
+test_users.json
+simulation_results/
+load_test_results/
+performance_reports/
+
+# =====================================
+# Kubernetes (if deploying to k8s)
+# =====================================
+*.kubeconfig
+kube-config
+.kube/
+k8s-secrets/
+
+# =====================================
+# Terraform (if using IaC)
+# =====================================
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+terraform.tfvars.json
+
+# =====================================
+# Keep Important Empty Directories
+# =====================================
+!data/.gitkeep
+!logs/.gitkeep
+!backups/.gitkeep
+!grafana/provisioning/
+!prometheus/rules/
+!loki/rules/
+
+# =====================================
+# Project Specific Exclusions
+# =====================================
+# User uploaded content
+uploads/
+user_data/
+session_data/
+
+# Generated configurations
+config/generated/
+auto_generated_*
+
+# Runtime files
+*.pid
+*.sock
+pids/
+
+# Cache directories
+.cache/
+cache/
+.npm/
+.yarn/
+
+# Package files
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+*.rar
+
+# =====================================
+# Keep Templates and Examples
+# =====================================
+!config/templates/
+!examples/
+!docs/
+!scripts/templates/

@@ -1,0 +1,84 @@
+# 📄 MIT License
+
+Copyright (c) 2025 OBS Stack - Observability & Monitoring Solution
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 🚀 About This Project
+
+OBS Stack is a comprehensive Docker-based observability and monitoring solution designed for enterprise-scale OpenWebUI deployments. Built to monitor 200+ concurrent users on AWS EC2 p3.24xlarge instances with advanced analytics, intelligent alerting, and automatic scaling capabilities.
+
+### 🎯 Key Features Covered by This License:
+
+✅ **Complete Observability Stack** - Grafana, Prometheus, Loki, cAdvisor integration
+✅ **User Analytics** - Real-time tracking and behavior analysis for 200+ users  
+✅ **GPU Monitoring** - NVIDIA GPU performance tracking optimized for p3.24xlarge
+✅ **Intelligent Alerting** - Proactive notifications and escalation policies
+✅ **Automatic Scaling** - Resource scaling based on user load and system metrics
+✅ **CLI Tools** - docker-logger command suite for operational excellence
+✅ **Windows Development Environment** - Complete testing suite for Windows 11
+✅ **Production Deployment Scripts** - Automated setup for Linux/EC2 environments
+
+### 📚 Documentation & Support:
+
+- **Installation Guides** - Complete setup instructions for Windows and Linux
+- **API Documentation** - REST API reference for integration
+- **Dashboard Configuration** - Grafana dashboard setup and customization
+- **Scaling Guides** - Resource scaling and capacity planning
+- **Troubleshooting** - Common issues and resolution procedures
+
+### 🤝 Contributing:
+
+This project welcomes contributions under the MIT license terms. Contributors retain copyright to their contributions while granting the same MIT license terms to the project.
+
+### 🔧 Third-Party Components:
+
+This project integrates with and builds upon several open-source components, each under their respective licenses:
+
+- **Grafana** - Apache License 2.0
+- **Prometheus** - Apache License 2.0  
+- **Loki** - Apache License 2.0
+- **Docker** - Apache License 2.0
+- **FastAPI** - MIT License
+- **SQLite** - Public Domain
+- **Python** - Python Software Foundation License
+
+### ⚠️ Disclaimer:
+
+This software is provided for monitoring and observability purposes. Users are responsible for:
+
+- Ensuring compliance with their organization's security policies
+- Proper configuration of access controls and authentication
+- Regular security updates and maintenance
+- Monitoring resource usage and associated costs (especially on cloud platforms)
+- Compliance with applicable data privacy regulations
+
+### 📞 Support & Contact:
+
+For questions, issues, or contributions related to this project:
+
+- **GitHub Issues**: Report bugs and request features
+- **GitHub Discussions**: Community support and questions  
+- **Documentation**: Comprehensive guides in the docs/ directory
+
+---
+
+**Built with ❤️ for enterprise-scale OpenWebUI monitoring and observability**
