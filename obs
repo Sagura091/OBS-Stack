@@ -1,0 +1,184 @@
+#!/bin/bash
+
+# 🚀 OBS Stack - Simple Docker Compose Helper
+# For users who just want to run docker-compose commands easily
+
+set -e
+
+# Colors
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+print_usage() {
+    echo -e "${BLUE}🚀 OBS Stack - Simple Commands${NC}"
+    echo ""
+    echo "Usage: $0 [command]"
+    echo ""
+    echo "Commands:"
+    echo -e "  ${GREEN}start${NC}     - Start all services"
+    echo -e "  ${GREEN}stop${NC}      - Stop all services"
+    echo -e "  ${GREEN}restart${NC}   - Restart all services"
+    echo -e "  ${GREEN}status${NC}    - Show service status"
+    echo -e "  ${GREEN}logs${NC}      - Show logs from all services"
+    echo -e "  ${GREEN}logs [service]${NC} - Show logs from specific service"
+    echo -e "  ${GREEN}update${NC}    - Pull latest images and restart"
+    echo -e "  ${GREEN}clean${NC}     - Stop and remove all containers/volumes"
+    echo -e "  ${GREEN}install${NC}   - Run full installation"
+    echo -e "  ${GREEN}monitor${NC}   - Open monitoring dashboards"
+    echo ""
+    echo "Examples:"
+    echo "  $0 start"
+    echo "  $0 logs opshub"
+    echo "  $0 status"
+}
+
+start_services() {
+    echo -e "${BLUE}🚀 Starting OBS Stack services...${NC}"
+    
+    # Check if running on Windows (Git Bash/WSL)
+    if [[ "$OSTYPE" == "msys" ]] || [[ "$(uname -r)" == *"Microsoft"* ]]; then
+        if [ -f "docker-compose.windows.yml" ]; then
+            docker-compose -f docker-compose.yml -f docker-compose.windows.yml up -d
+        else
+            docker-compose up -d
+        fi
+    else
+        docker-compose up -d
+    fi
+    
+    echo -e "${GREEN}✅ Services started!${NC}"
+    echo ""
+    echo "Access your dashboards:"
+    echo -e "  Grafana: ${BLUE}http://localhost:3001${NC} (admin/admin)"
+    echo -e "  Prometheus: ${BLUE}http://localhost:9090${NC}"
+    echo -e "  OpsHub API: ${BLUE}http://localhost:8089${NC}"
+}
+
+stop_services() {
+    echo -e "${YELLOW}🛑 Stopping OBS Stack services...${NC}"
+    docker-compose down
+    echo -e "${GREEN}✅ Services stopped!${NC}"
+}
+
+restart_services() {
+    echo -e "${YELLOW}🔄 Restarting OBS Stack services...${NC}"
+    docker-compose down
+    sleep 2
+    start_services
+}
+
+show_status() {
+    echo -e "${BLUE}📊 Service Status:${NC}"
+    echo ""
+    docker-compose ps
+    echo ""
+    echo -e "${BLUE}🔗 Quick Links:${NC}"
+    echo -e "  Grafana: ${BLUE}http://localhost:3001${NC}"
+    echo -e "  Prometheus: ${BLUE}http://localhost:9090${NC}"
+    echo -e "  OpsHub API: ${BLUE}http://localhost:8089${NC}"
+}
+
+show_logs() {
+    if [ -n "$2" ]; then
+        echo -e "${BLUE}📋 Showing logs for service: $2${NC}"
+        docker-compose logs -f "$2"
+    else
+        echo -e "${BLUE}📋 Showing logs for all services:${NC}"
+        docker-compose logs -f
+    fi
+}
+
+update_services() {
+    echo -e "${BLUE}📥 Updating OBS Stack...${NC}"
+    docker-compose pull
+    echo -e "${YELLOW}🔄 Restarting with latest images...${NC}"
+    docker-compose down
+    start_services
+    echo -e "${GREEN}✅ Update complete!${NC}"
+}
+
+clean_all() {
+    echo -e "${RED}🧹 Cleaning up OBS Stack...${NC}"
+    echo -e "${YELLOW}Warning: This will remove all containers and volumes!${NC}"
+    read -p "Are you sure? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        docker-compose down -v --remove-orphans
+        docker system prune -f
+        echo -e "${GREEN}✅ Cleanup complete!${NC}"
+    else
+        echo -e "${YELLOW}Cleanup cancelled.${NC}"
+    fi
+}
+
+run_installation() {
+    echo -e "${BLUE}🔧 Running full installation...${NC}"
+    
+    if [ -f "./quick-install.sh" ]; then
+        chmod +x ./quick-install.sh
+        ./quick-install.sh
+    else
+        echo -e "${RED}❌ quick-install.sh not found!${NC}"
+        exit 1
+    fi
+}
+
+open_monitoring() {
+    echo -e "${BLUE}🖥️ Opening monitoring dashboards...${NC}"
+    
+    # Try to open in default browser
+    if command -v xdg-open > /dev/null; then
+        xdg-open http://localhost:3001 2>/dev/null &
+    elif command -v open > /dev/null; then
+        open http://localhost:3001 2>/dev/null &
+    elif command -v start > /dev/null; then
+        start http://localhost:3001 2>/dev/null &
+    else
+        echo "Please open: http://localhost:3001"
+    fi
+    
+    echo -e "${GREEN}✅ Dashboards should open in your browser${NC}"
+}
+
+# Main command handling
+case "$1" in
+    "start")
+        start_services
+        ;;
+    "stop")
+        stop_services
+        ;;
+    "restart")
+        restart_services
+        ;;
+    "status")
+        show_status
+        ;;
+    "logs")
+        show_logs "$@"
+        ;;
+    "update")
+        update_services
+        ;;
+    "clean")
+        clean_all
+        ;;
+    "install")
+        run_installation
+        ;;
+    "monitor")
+        open_monitoring
+        ;;
+    "")
+        print_usage
+        ;;
+    *)
+        echo -e "${RED}❌ Unknown command: $1${NC}"
+        echo ""
+        print_usage
+        exit 1
+        ;;
+esac

@@ -73,6 +73,43 @@ graph TB
     API[REST API] --> OpsHub
 ```
 
+## ⚡ ONE-COMMAND SETUP
+
+**🎯 For Complete Beginners - Just Copy & Paste!**
+
+### 🐧 **Linux/EC2 (Production)**
+```bash
+curl -sSL https://raw.githubusercontent.com/Sagura091/OBS-Stack/main/quick-install.sh | bash
+```
+
+### 🪟 **Windows 11 (Development/Testing)**
+```powershell
+iwr -useb https://raw.githubusercontent.com/Sagura091/OBS-Stack/main/quick-install-windows.ps1 | iex
+```
+
+**That's it! 🎉** Everything installs automatically:
+- ✅ Docker installation
+- ✅ All services configured  
+- ✅ Dashboards ready
+- ✅ 200+ user monitoring active
+- ✅ Shows you exactly where to access everything
+
+---
+
+## 🏃‍♂️ Alternative: Super Quick Local Setup
+
+Already have Docker? Even faster:
+
+```bash
+git clone https://github.com/Sagura091/OBS-Stack.git
+cd OBS-Stack
+./obs start
+```
+
+**Access instantly**: http://localhost:3001 (admin/admin)
+
+---
+
 ## ⚡ Quick Start
 
 ### 🐧 **Linux/EC2 Production**
