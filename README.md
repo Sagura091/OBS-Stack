@@ -79,8 +79,8 @@ graph TB
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/obs-stack.git
-cd obs-stack
+git clone https://github.com/Sagura091/OBS-Stack.git
+cd OBS-Stack
 
 # Set up the environment
 sudo chmod +x setup-linux.sh
@@ -103,8 +103,8 @@ docker-logger monitor
 
 ```powershell
 # Clone the repository
-git clone https://github.com/yourusername/obs-stack.git
-cd obs-stack
+git clone https://github.com/Sagura091/OBS-Stack.git
+cd OBS-Stack
 
 # Set up Windows development environment
 .\setup-windows.ps1
